@@ -72,6 +72,14 @@
                 </a>
               </li>
 
+
+              <li class="nav-item">
+                <a href="{{route('role.create')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>

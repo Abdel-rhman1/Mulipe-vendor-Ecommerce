@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\catergoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\RoleController;
 use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,18 @@ Route::group(['prefix'=>'units' , 'middleware'=>['auth']] , function(){
     Route::delete('hard-delete' , [UnitController::class , 'hardDelete'])->name('unit.hardDelete');
 });
 
+
+Route::group(['prefix'=>'roles' , 'middleware'=>['auth']] , function(){
+    Route::get('' , [RoleController::class , 'index'])->name('role.index');
+    Route::get('create' , [RoleController::class , 'create'])->name('role.create');
+    Route::post('store' , [RoleController::class , 'store'])->name('role.store');
+    Route::get('edit' , [RoleController::class , 'edit'])->name('role.edit');
+    Route::post('update' , [RoleController::class , 'update'])->name('role.update');
+    Route::get('soft-delete' , [RoleController::class , 'softDelete'])->name('role.softDelete');
+    Route::get('trach' , [RoleController::class , 'trach'])->name('role.trach');
+    Route::post('restore' , [RoleController::class , 'restore'])->name('role.restore');
+    Route::delete('hard-delete' , [RoleController::class , 'hardDelete'])->name('role.hardDelete');
+});
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('github')->redirect();
