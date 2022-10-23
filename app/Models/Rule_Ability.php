@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rule extends Model
+class Rule_Ability extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
+    public $table = 'rule_abilities';
+    protected $fillable= [
+        'role_id' , 'ability' , 'type'
     ];
 }

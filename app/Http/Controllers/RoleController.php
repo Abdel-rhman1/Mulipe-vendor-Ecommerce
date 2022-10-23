@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
-use App\Models\Role;
+use App\Models\Rule;
+use App\Models\Rule_Ability;
 class RoleController extends Controller
 {
 
@@ -22,6 +23,22 @@ class RoleController extends Controller
 
 
     public function store(Request $request){
-        dd($request);
+
+        $role = Rule::create([
+            'name'=>$request->name,
+        ]);
+
+        foreach($request['abilities'] as $ability=>$type){
+            Rule_Ability::create([
+                'role_id'=>$role->id,
+                'ability'=>$ability,
+                'type'=>$type,
+            ]);
+        }
+        
+        if($role){
+            return redirect()->back()->with(['successMsg'=>'Unit Created Siccefully']);
+        }
+
     }
 }
