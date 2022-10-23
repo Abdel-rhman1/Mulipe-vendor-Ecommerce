@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+
 use App\Models\User_Ability;
+use App\Models\Rule;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,7 +46,13 @@ class User extends Authenticatable
 
 
     public function userRules(){
-        return $this->hasMany(User_Ability::class , 'user_id' , 'id');
+        return $this->belongsToMany(Rule::class,'user_rules', 'user_id' , 'role_id');
     }
 
+    public function hasRule($ability){
+        return $this->userRules()->whereHas('abilities' , function ($query) use ($ability){
+            $query->where('ability' , $ability)
+            ->where('type' , 'allow');
+        })->exists();
+    }
 }

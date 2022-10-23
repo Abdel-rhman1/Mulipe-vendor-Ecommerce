@@ -23,8 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::define('categories.view' , function(){
-            return true;
-        });
+        foreach(config('abilities') as $code => $ability){
+            Gate::define($code , function($user) use ($code){
+                return $user->hasRule($code);
+            });
+        }
+     
     }
 }
