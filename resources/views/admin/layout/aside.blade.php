@@ -27,7 +27,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           @foreach (config('nav') as $code=>$navItemInfo)
-            @can($navItemInfo['role'])
+
               <li class="nav-item menu-open">
                 <a href="{{route($navItemInfo['route'])}}" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -37,7 +37,7 @@
                   </p>
                 </a>
               </li>
-              @endcan
+
           @endforeach
         </ul>
       </nav>

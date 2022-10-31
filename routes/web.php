@@ -81,6 +81,18 @@ Route::group(['prefix'=>'roles' , 'middleware'=>['auth']] , function(){
     Route::delete('hard-delete' , [RoleController::class , 'hardDelete'])->name('role.hardDelete');
 });
 
+Route::group(['prefix'=>'currencies' , 'middleware'=>['auth']] , function(){
+    Route::get('' , [CurrencyController::class , 'index'])->name('currency.index');
+    Route::get('create' , [CurrencyController::class , 'create'])->name('currency.create');
+    Route::post('store' , [CurrencyController::class , 'store'])->name('currency.store');
+    Route::get('edit' , [CurrencyController::class , 'edit'])->name('currency.edit');
+    Route::post('update' , [CurrencyController::class , 'update'])->name('currency.update');
+    Route::get('soft-delete' , [CurrencyController::class , 'softDelete'])->name('currency.softDelete');
+    Route::get('trach' , [CurrencyController::class , 'trach'])->name('currency.trach');
+    Route::post('restore' , [CurrencyController::class , 'restore'])->name('currency.restore');
+    Route::delete('hard-delete' , [CurrencyController::class , 'hardDelete'])->name('currency.hardDelete');
+});
+
 Route::get('/auth/redirect', function () {
     return Socialite::driver('github')->redirect();
 });

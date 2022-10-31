@@ -29,16 +29,20 @@
             'role'=>'roles.view',
             'icon'=>'',
             'route'=>'role.index',
+            'route'=>'role.index',
         ],
 
         'currencies'=>[
             'name'=>'currencies',
             'role'=>'role.index',
+            'route'=>'currency.index',
+
         ],
 
         'customers'=>[
             'name'=>'Customers',
-            'role'=>'role.index',
+            'role'=>'cutomer.index',
+            'route'=>'role.index'
         ]
     ]
 

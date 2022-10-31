@@ -12,7 +12,7 @@ class RoleController extends Controller
 
     public function index(){
         $stor_id = Auth::id();
-        $roles = Role::where('stor_id' , $stor_id)->get();
+        $roles = Rule::where('stor_id' , $stor_id)->get();
         return view('admin.role.index')->with(['roles'=>$roles]);
     }
 

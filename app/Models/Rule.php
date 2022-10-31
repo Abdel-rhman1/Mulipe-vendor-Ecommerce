@@ -11,7 +11,7 @@ class Rule extends Model
 
     protected $table = 'rules';
     protected $fillable = [
-        'name'
+        'name' , 'stor_id'
     ];
 
 
