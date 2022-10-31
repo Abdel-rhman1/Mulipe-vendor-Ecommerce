@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Category;
-use Unit;
+use App\Models\Unit;
 use Illuminate\Support\Facades\File;
 use App\Models\ProductImage;
+use App\Models\Category;
+
 class Product extends Model
 {
     use HasFactory;
@@ -18,11 +19,11 @@ class Product extends Model
 
 
     public function category(){
-        return $this->hasOne(Category::class , 'category_id' , 'id');
+        return $this->hasOne(Category::class , 'id' , 'category_id');
     }
 
     public function unit(){
-        return $this->hasOne(Unit::class , 'unit_id' , 'id');
+        return $this->hasOne(Unit::class , 'id' , 'unit_id');
     }
 
     public function ProductImages(){

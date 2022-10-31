@@ -30,7 +30,11 @@
                 <th>#</th>
                 <th>Name_ar</th>
                 <th>Name_en</th>
-                
+                <th>Category</th>
+                <th>Unit</th>
+                <th>qty</th>
+                <th>price</th>
+                <th>Opts</th>
               </tr>
               </thead>
                <tbody>
@@ -46,9 +50,34 @@
                     <td>
                       {{$product->name_en}}
                     </td>
+
+                    <td>
+                      {{$product->category->name}}
+                    </td>
+
+                    <td>
+                      {{$product->unit->name}}
+                    </td>
+                    <td>
+                      {{$product->qty}}
+                    </td>
+
+                    <td>
+                      {{$product->price}}
+                    </td>
+                    <td>
+                      <button class="btn btn-primary">
+                        <a href="{{route('product.edit' , $product)}}">
+                          edit
+                        </a>
+                      </button>
+                      <button class="btn btn-danger DeleteProduct">
+                        delete
+                      </button>
+
+                    </td>
                   </tr>
                 @endforeach
-                  
                </tbody>
             </table>
         </div>

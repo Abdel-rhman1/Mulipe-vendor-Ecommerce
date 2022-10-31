@@ -4,19 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Table extends Component
+class dialog extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $data;
-    public $type;
-    public function __construct($data , $type)
+    public function __construct()
     {
-        $this->data = $data;
-        $this->type = $type;
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class Table extends Component
      */
     public function render()
     {
-        return view('components.table')->with(['data'=>$this->data]);
+        return view('components.dialog');
     }
 }

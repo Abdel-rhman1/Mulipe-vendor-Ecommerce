@@ -37,7 +37,7 @@
                         
                       </tr>
                       </thead>
-                        <x-Table :data="$categories"/>
+                        <x-Table type="category" :data="$categories"/>
                     </table>
                 </div>
               </div>

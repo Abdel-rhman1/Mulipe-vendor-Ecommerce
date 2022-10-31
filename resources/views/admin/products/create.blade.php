@@ -34,21 +34,31 @@
                   <div class="col-md-6 col-sm-12">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Arabic Product Name</label>
-                    <input name="name_ar" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Product Name">
+                    <input name="name_ar" type="text" class="form-control @error('name_ar') is-invalid @enderror" id="exampleInputEmail1" placeholder="Enter Product Name">
+                  
+                    @error('name_ar')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   </div>
 
                   <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">English Product Name</label>
-                      <input name="name_en" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Product Name">
+                      <label for="exampleInputEmail1">{{Lang::get("name_en")}}</label>
+                      <input name="name_en" type="text"
+                      
+                      class="form-control @error('name_en') is-invalid @enderror"
+                      id="exampleInputEmail1" placeholder="Enter Product Name">
+                      @error('name_en')
+                          <div class="text-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
                         <label>Unit Name</label>
-                       <select name='unit_id' class="form-control">
+                       <select name='unit_id' class="form-control @error('unit_id') is-invalid @enderror">
                           <option value="{{null}}">
                               No Parent Category
                           </option>
@@ -57,6 +67,9 @@
                                   {{$unit->name}}
                               </option>
                           @endforeach
+                          @error('unit_id')
+                              <div class="text-danger">{{ $message }}</div>
+                          @enderror
                        </select>
                       </div>
                     </div>
@@ -66,7 +79,9 @@
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
                         <label >Category Name</label>
-                       <select name='category_id' class="form-control">
+                       <select name='category_id' class="form-control @error('category_id')
+                       is-invalid
+                       @enderror">
                           <option value="{{null}}">
                               No Parent Category
                           </option>
@@ -76,6 +91,10 @@
                               </option>
                           @endforeach
                        </select>
+
+                       @error('category_id')
+                          <div class="text-danger">{{ $message }}</div>
+                       @enderror
                       </div>
                     </div>
 
@@ -83,7 +102,13 @@
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
                         <label for="exampleInputEmail1">qty</label>
-                        <input name="qty" type="number" class="form-control"  placeholder="Enter Product Name">
+                        <input name="qty" type="number" class="form-control @error('qty')
+                        is-invalid
+                        @enderror"  placeholder="Enter Product Name">
+
+                        @error('qty')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       </div>
 
@@ -92,7 +117,13 @@
                   <div class="col-md-6 col-sm-12">
                       <div class="form-group">
                         <label for="exampleInputPassword1">Product Price</label>
-                        <input type="text" name='price' class="form-control" id="exampleInputPassword1" placeholder="Price">
+                        <input type="text" name='price' class="form-control @error('price')
+                        is-invalid
+                        @enderror" id="exampleInputPassword1" placeholder="Price">
+
+                        @error('price')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>     
                   </div>
 
@@ -112,12 +143,6 @@
                     </div>
                   </div>
                   </div>
-                  <div class="col-md-6 col-sm-12 d-flex align-items-center">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                </div>
                 <div class="card-footer text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

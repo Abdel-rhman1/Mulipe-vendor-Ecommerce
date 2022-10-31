@@ -19,19 +19,23 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+
+
+
+Route::get('switchLang/{lang}' , function($lang=null){
+    App()->setlocale($lang);
+    session()->put('locale',$lang);
+    return redirect()->back();
+});
 Route::get('/dashboard', [dashboardController::class , 'index'])->name('dashboard')->middleware('auth');
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::group(['prefix'=>'products','middleware'=>['auth']] , function(){
     Route::get('' , [ProductsController::class , 'index'] )->name('products.index');
     Route::get('create' , [ProductsController::class , 'create'])->name('product.create');
     Route::post('store' , [ProductsController::class , 'store'])->name('product.store');
-    Route::get('edit' , [ProductsController::class , 'edit'])->name('product.edit');
-    Route::get('update' , [ProductsController::class , 'update'])->name('product.update');
+    Route::get('edit/{product}' , [ProductsController::class , 'edit'])->name('product.edit');
+    Route::post('update' , [ProductsController::class , 'update'])->name('product.update');
     Route::get('delete' , [ProductsController::class , 'softDelete'])->name('product.delete');
     Route::get('trach' , [ProductsController::class , 'trach'])->name('products.trach');
     Route::get('restore' , [ProductsController::class , 'restore'])->name('product.restore');
